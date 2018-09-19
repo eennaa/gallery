@@ -8,7 +8,9 @@ import GalleryList from './components/GalleryList.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/galleryOVO', component: GalleryList },  
+  { path: '/gallery', redirect: '/' },  
+  { path: '/', component: GalleryList },
+  { path: '/gallery/:id', component: GalleryList },  
   { path: '/login', component: Login },
 ]
 

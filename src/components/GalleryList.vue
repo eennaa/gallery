@@ -1,10 +1,11 @@
 <template>
   <div>
     <ul v-for="gallery in galleries" :key="gallery.id">
-      <li>ID: {{ gallery.id }}</li>
+      <li>Gallery's ID: {{ gallery.id }}</li>
       <li>Title: {{ gallery.title }}</li>
       <li>Description: {{ gallery.description }}</li>
       <li>User's ID: {{ gallery.user_id }}</li>
+      <li>Author: {{ gallery.user.first_name }} {{ gallery.user.last_name }}</li>
     </ul>
   </div>
 </template>

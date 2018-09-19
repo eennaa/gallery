@@ -6,7 +6,7 @@ export default class Gallery {
   }
 
   getAll() {    
-    return axios.get('galleryOVO');
+    return axios.get('gallery');
   }
 }
 
