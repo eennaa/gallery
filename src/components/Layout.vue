@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">All Galleries</a>
+            <a class="nav-link" href="/galleryOVO">All Galleries</a>
           </li>
         </ul>
         <ul class="navbar-nav mr" v-show=true> 
