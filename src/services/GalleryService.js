@@ -8,6 +8,10 @@ export default class Gallery {
   getAll() {    
     return axios.get('gallery');
   }
+
+  getSingleGallery(id) {
+    return axios.get(`gallery/${id}?filter={"include":["users"]}`);
+  }
 }
 
 export const galleriesService = new Gallery()

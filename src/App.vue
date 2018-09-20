@@ -12,7 +12,9 @@ export default {
   name: 'app',
   components: {
     Layout
-  }
+  },
+
+  
 }
 </script>
 

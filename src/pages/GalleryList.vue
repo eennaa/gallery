@@ -2,7 +2,9 @@
   <div>
     <ul v-for="gallery in galleries" :key="gallery.id">
       <li>Gallery's ID: {{ gallery.id }}</li>
-      <li>Title: {{ gallery.title }}</li>
+      <li>
+        <router-link :to="{ name: 'singleGallery', params: { id: gallery.id }}">Title: {{ gallery.title }}</router-link>
+      </li>
       <li>Description: {{ gallery.description }}</li>
       <li>User's ID: {{ gallery.user_id }}</li>
       <li>Author: {{ gallery.user.first_name }} {{ gallery.user.last_name }}</li>
@@ -12,6 +14,7 @@
 
 <script>
 import { galleriesService } from './../services/GalleryService'
+
 export default {
   
   data() {
@@ -20,11 +23,11 @@ export default {
     }
   },
 
-  created(to, from, next) {
+  created() {
       galleriesService
       .getAll()
       .then((galleries) => this.galleries = galleries.data)   
-    }
+  }
 }
 
 
