@@ -10,7 +10,7 @@ export default class Gallery {
   }
 
   getSingleGallery(id) {
-    return axios.get(`gallery/${id}?filter={"include":["users"]}`);
+    return axios.get(`gallery/${id}`); //`gallery/${id}?filter={"include":["users"]}`
   }
 }
 

@@ -1,27 +1,38 @@
 <template>
-    <div>        
-        <ul>
-            <li>Gallery's ID: {{ gallery.id }}</li>
-            <li>Title: {{ gallery.title }}</li>
-            <li>Description: {{ gallery.description }}</li>
-            <li>User's ID: {{ gallery.user_id }}</li>
-            <li>Author: {{ gallery.user.first_name }} {{ gallery.user.last_name }}</li>
-
+    <div class="container">        
+        <ul> <br> <h2>{{ gallery.title }}</h2></ul>        
+        <ul v-if="gallery.user">        
+            Author:
+            <router-link :to="{ name: 'author', params: { id: gallery.id }}">
+            {{ gallery.user.first_name }} {{ gallery.user.last_name }}
+            </router-link>
         </ul>
+        <ul>
+            Created: {{ gallery.created_at | formatDate }}
+        </ul>
+        <ul>Description: {{ gallery.description }}</ul>
+        <carousel :gallery="gallery"/>
     </div>
 </template>
 
 <script>
 import { galleriesService } from './../services/GalleryService'
+import { DateMixin } from '../mixins'
+import Carousel from './../components/Carousel.vue'
+
 
 export default {
-    
+    components: {
+        Carousel
+    },
 
     data () {
         return {
             gallery: {},
         }
     },
+
+    mixins: [ DateMixin ],
 
     // created () {
     //     console.log(this.galleryId)

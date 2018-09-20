@@ -1,7 +1,7 @@
 // predugacka polja za input
 // login button nije podesen
 <template>
-  <div>  
+  <div class="container">  
     <form>
       <br>
       <div class="form-group">

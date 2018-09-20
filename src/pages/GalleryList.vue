@@ -1,19 +1,32 @@
 <template>
-  <div>
+  <div class="container">
+    <h2>All Galleries</h2>
     <ul v-for="gallery in galleries" :key="gallery.id">
-      <li>Gallery's ID: {{ gallery.id }}</li>
       <li>
-        <router-link :to="{ name: 'singleGallery', params: { id: gallery.id }}">Title: {{ gallery.title }}</router-link>
+        <router-link :to="{ name: 'singleGallery', params: { id: gallery.id }}">
+          Title: {{ gallery.title }}
+        </router-link>
       </li>
-      <li>Description: {{ gallery.description }}</li>
-      <li>User's ID: {{ gallery.user_id }}</li>
-      <li>Author: {{ gallery.user.first_name }} {{ gallery.user.last_name }}</li>
+      <li>
+        <img :src="gallery.images[0].url" alt="Image is being loaded"> 
+      </li>
+      <li>        
+        Author:
+        <router-link :to="{ name: 'author', params: { id: gallery.id }}">
+          {{ gallery.user.first_name }} {{ gallery.user.last_name }}
+        </router-link>
+      </li>
+      <li>
+        Created: {{ gallery.created_at | formatDate }}
+      </li>
+      
     </ul>
   </div>
 </template>
 
 <script>
 import { galleriesService } from './../services/GalleryService'
+import { DateMixin } from '../mixins'
 
 export default {
   
@@ -22,6 +35,8 @@ export default {
       galleries: [],
     }
   },
+  
+  mixins: [ DateMixin ],
 
   created() {
       galleriesService
