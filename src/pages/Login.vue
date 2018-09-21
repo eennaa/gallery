@@ -19,7 +19,7 @@
           <div class="input-group-addon">
             <i class="fa fa-lock"></i>
           </div> 
-          <input id="password" name="password" placeholder="your password" required="required" class="form-control here" type="text">
+          <input id="password" name="password" placeholder="your password" required="required" class="form-control here" type="password">
         </div>
       </div> 
       <div class="form-group">

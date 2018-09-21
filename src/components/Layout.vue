@@ -18,7 +18,7 @@
             <a class="nav-link" href="/gallery">All Galleries</a>
           </li>
         </ul>
-        <ul class="navbar-nav mr" v-show=true> 
+        <ul class="navbar-nav mr" v-show=!isLoggedIn> 
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
@@ -26,7 +26,7 @@
             <a class="nav-link" href="/register">Register</a>
           </li>
         </ul>
-        <ul class="navbar-nav mr-auto" v-show=true>
+        <ul class="navbar-nav mr-auto" v-show=isLoggedIn>
           <li class="nav-item">
             <a class="nav-link" href="/my-galleries">My Galleries</a>
           </li>
@@ -34,7 +34,7 @@
             <a class="nav-link" href="/create">Create New Gallery</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" @click="logout">Logout</a>
           </li>
         </ul>        
       </div>
@@ -43,8 +43,20 @@
 </template>
 
 <script>
-export default {
 
+export default {
+  props: {
+    isLoggedIn: {
+      type: Boolean,
+      required: true
+    }
+  },
+
+  methods: {
+    logout() {
+      console.log('logged out', this.isLoggedIn)
+    }
+  }
 }
 </script>
 

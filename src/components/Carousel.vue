@@ -10,11 +10,11 @@
                 img-height="480"
     >
 
-      <div v-for="imageURL in gallery.images" :key="imageURL.id" :imageURL="imageURL">
-        <a :href="imageURL.url" target="_blank">
+      <div v-for="image in gallery.images" :key="image.id" :image="image">
+        <a :href="image.url" target="_blank">
           <b-carousel-slide :caption="gallery.title"
                             :text="'by: ' + gallery.user.first_name + '  ' + gallery.user.last_name"
-                            :img-src="imageURL.url"
+                            :img-src="image.url"
                           
           />          
         </a>

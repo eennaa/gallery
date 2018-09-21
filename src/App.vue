@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <layout/>
-    <router-view/>
+    <layout @userLoggedIn="toggleLogin" :isLoggedIn="isLoggedIn"/>
+    <router-view @userLoggedIn="toggleLogin" />
   </div>
 </template>
 
 <script>
 import Layout from './components/Layout.vue'
+import { authService } from './services/Auth'
+
 
 export default {
   name: 'app',
@@ -14,6 +16,17 @@ export default {
     Layout
   },
 
+  data() {
+    return {
+      isLoggedIn: authService.isAuthenticated()
+    }
+  },
+
+  methods: {
+    toggleLogin (val) { 
+      this.isLoggedIn = value
+    }
+  }
   
 }
 </script>
