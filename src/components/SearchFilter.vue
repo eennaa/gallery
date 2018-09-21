@@ -5,7 +5,8 @@
           <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul v-show="searchTerm">
-            You are searching for {{ searchTerm }}, and there are {{ filteredGalleries.length }} results.<br>Click on the Search button to see them.
+            You are searching for "{{ searchTerm }}", and there are {{ filteredGalleries.length }} results.<br>
+            Click on the Search button to see them.
         </ul>
     </div>
 </template>
