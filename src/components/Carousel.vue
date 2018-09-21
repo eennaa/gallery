@@ -8,9 +8,6 @@
                 :interval="4000"
                 img-width="1024"
                 img-height="480"
-                v-model="slide"
-                @sliding-start="onSlideStart"
-                @sliding-end="onSlideEnd"
     >
 
       <div v-for="imageURL in gallery.images" :key="imageURL.id" :imageURL="imageURL">
@@ -35,6 +32,7 @@ export default {
       required: true
     }
   },
+  
   
 }
 </script>
