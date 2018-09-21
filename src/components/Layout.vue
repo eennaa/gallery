@@ -1,7 +1,6 @@
 ////TREBA URADITI:
 // logicnije pozicionirati linkove
 //u v-show proslediti da li je korisnik ulogovan ili ne
-//search form prebaciti u home page
 //srediti href za logout
 
 <template>
@@ -37,11 +36,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Logout</a>
           </li>
-        </ul>
-        <!-- <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
+        </ul>        
       </div>
     </nav>
   </div>
