@@ -18,6 +18,7 @@ export default class AuthService {
       this.setAxiosDefaultAuthorizationHeader()
     })
   }
+  
 
   setAxiosDefaultAuthorizationHeader() {
     const TOKEN = window.localStorage.getItem('loginToken')

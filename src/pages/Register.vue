@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <form @submit.prevent="onSubmit">
+        <form @submit.prevent="onRegister">
             <br><br>
             <div class="form-group row">
                 <label for="text" class="col-5 col-form-label">First name</label> 
@@ -53,9 +53,11 @@
 
 <script>
 import { authService } from './../services/Auth'
+
 export default {
     props: {
-        isLoggedIn: Boolean
+        isLoggedIn: Boolean,
+        userLoggedIn: Boolean
     },
 
     data () {
@@ -66,7 +68,7 @@ export default {
     },
 
     methods: {
-        onSubmit () {                                                                                                                                                     
+        onRegister () {                                                                                                                                                     
             authService
             .register(this.newUser) 
             .then((response) => {
@@ -81,4 +83,4 @@ export default {
         }
     },
 }
-</script>
+</script>   

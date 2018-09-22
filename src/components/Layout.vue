@@ -1,4 +1,5 @@
 ////TREBA URADITI:
+import { authService } from '../services/Auth';
 // logicnije pozicionirati linkove
 //u v-show proslediti da li je korisnik ulogovan ili ne
 //srediti href za logout
@@ -43,19 +44,23 @@
 </template>
 
 <script>
+import { authService } from './../services/Auth'
 
 export default {
   props: {
     isLoggedIn: {
       type: Boolean,
       required: true
-    }
+    },
+    userLoggedIn: Boolean
   },
 
   methods: {
     logout() {
-      console.log('logged out', this.isLoggedIn)
-    }
+      authService.logout()
+      this.$emit('userLoggedIn', false)
+      this.$router.push('/')
+      }
   }
 }
 </script>

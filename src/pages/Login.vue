@@ -2,7 +2,7 @@
 // login button nije podesen
 <template>
   <div class="container">  
-    <form>
+    <form @submit.prevent="onLogin">
       <br>
       <div class="form-group">
         <label for="email">email</label> 
@@ -30,8 +30,26 @@
 </template>
 
 <script>
-export default {
+import { authService } from './../services/Auth'
 
+export default {
+data () {
+  return {
+    loginCredentials: {}
+  }
+},
+
+methods: {
+  onLogin(){
+    authService
+    .login(this.loginCredentials.email, this.loginCredentials.password)
+    .then((response) => {
+      this.$emit('userLoggedIn', true)
+      this.$router.push('/')
+      })
+    .catch((error) => this.errors = error.response.data.errors)
+  }
+}
 }
 </script>
 

@@ -18,13 +18,14 @@ export default {
 
   data() {
     return {
+      userLoggedIn: false,
       isLoggedIn: authService.isAuthenticated()
     }
   },
 
   methods: {
     toggleLogin (val) { 
-      this.isLoggedIn = value
+      this.isLoggedIn = val
     }
   }
   
