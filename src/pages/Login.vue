@@ -10,7 +10,7 @@
           <div class="input-group-addon">
             <i class="fa fa-address-card"></i>
           </div> 
-          <input id="email" name="email" placeholder="your email" required="required" class="form-control here" type="text">
+          <input v-model="loginCredentials.email" id="email" name="email" placeholder="your email" required="required" class="form-control here" type="text">
         </div>
       </div>
       <div class="form-group">
@@ -19,7 +19,7 @@
           <div class="input-group-addon">
             <i class="fa fa-lock"></i>
           </div> 
-          <input id="password" name="password" placeholder="your password" required="required" class="form-control here" type="password">
+          <input v-model="loginCredentials.password" id="password" name="password" placeholder="your password" required="required" class="form-control here" type="password">
         </div>
       </div> 
       <div class="form-group">
@@ -43,7 +43,7 @@ methods: {
   onLogin(){
     authService
     .login(this.loginCredentials.email, this.loginCredentials.password)
-    .then((response) => {
+    .then(() => {
       this.$emit('userLoggedIn', true)
       this.$router.push('/')
       })
