@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div v-if="galleries[0]">
-      <h2>All Galleries</h2>
-      <SearchFilter :galleries.sync="galleries"/> <br><br>
+      <h2>{{ gallery.user.first_name }}'s Galleries</h2>
+      <SearchFilter :query.sync="query"/> <br><br>      
       <ul v-for="gallery in galleries" :key="gallery.id">
         <li>
           <router-link :to="{ name: 'singleGallery', params: { id: gallery.id }}">
@@ -32,8 +32,13 @@
 <script>
 import { galleriesService } from './../services/GalleryService'
 import { DateMixin } from '../mixins'
+import SearchFilter from './../components/SearchFilter.vue'
 
 export default {
+  name: 'authors-page',
+  components: {
+    SearchFilter
+  },
   data() {
     return {
       galleries: [],

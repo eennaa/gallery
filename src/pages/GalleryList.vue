@@ -50,12 +50,23 @@ export default {
     }
   },
   
-  computed: {
+  methods: {
     getGalleries () {
-      galleriesService
-      .getSearchedGalleries(this.query)
-      .then((galleries) => { this.galleries = galleries.data.data })
-    },
+        galleriesService
+        .getSearchedGalleries(this.query)
+        .then((response) => { this.galleries = response.data.data })
+    }
+  },
+  // events: {
+  //     eventName: function (argument) {
+  //         // logic
+  //     },
+  // },
+  computed: {
+    callGetGalleries: function () {
+      this.query
+      return this.getGalleries();
+    }
 
     // makePagination(data) {
     //   let pagination = {
