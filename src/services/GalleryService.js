@@ -12,6 +12,18 @@ export default class Gallery {
   getSingleGallery(id) {
     return axios.get(`gallery/${id}`); //`gallery/${id}?filter={"include":["users"]}`
   }
+
+  getSearchedGalleries(query) {
+    if(!query) {
+      query = '';
+    }
+
+    return axios.get(`gallery?query=${query}`);
+  }
+
+  getUsersGalleries(){
+    return axios.get();
+  }
 }
 
 export const galleriesService = new Gallery()

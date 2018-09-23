@@ -2,7 +2,7 @@
   <div class="container">
     <div v-if="galleries[0]">
       <h2>All Galleries</h2>
-      <SearchFilter :galleries.sync="galleries"/> <br><br>
+      <SearchFilter :query.sync="query"/> <br><br>
       <ul v-for="gallery in galleries" :key="gallery.id">
         <li>
           <router-link :to="{ name: 'singleGallery', params: { id: gallery.id }}">
@@ -35,23 +35,45 @@ import { DateMixin } from '../mixins'
 import SearchFilter from './../components/SearchFilter.vue'
 
 export default {
+  name: 'gallery-list',
   components: {
     SearchFilter
   },
-
+  
   data() {
     return {
       galleries: [],
+
+      url: '/api/gallery',
+      pagination: [],
+      query: ''
     }
   },
   
+  computed: {
+    getGalleries () {
+      galleriesService
+      .getSearchedGalleries(this.query)
+      .then((galleries) => { this.galleries = galleries.data.data })
+    },
+
+    // makePagination(data) {
+    //   let pagination = {
+    //     current_page: data.current_page,
+    //     last_page: data.last_page,
+    //     next_page_url: data.next_page_url,
+    //     prev_page_url: data.prev_page_url
+    //   }
+
+    //   this.pagination = pagination
+    // }
+    
+  },
   
   mixins: [ DateMixin ],
 
   created() {
-      galleriesService
-      .getAll()
-      .then((galleries) => this.galleries = galleries.data)
+    this.getGalleries();
   }
 
   
