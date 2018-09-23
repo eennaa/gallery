@@ -15,7 +15,7 @@ const routes = [
   { path: '/gallery', redirect: '/' },  
   { path: '/', component: GalleryList , name: 'gallery'},
   { path: '/galleries/:id', component: SingleGallery, name: 'singleGallery'},  //mozda ovo bude pravilo problem pa vrati na /galleries/:id
-  { path: '/authors/:id', component: AuthorsPage, name: 'author'},  
+  { path: '/author/:id', component: AuthorsPage, name: 'author'},  
   { path: '/login', component: Login },
   { path: '/register', component: Register },
 ]

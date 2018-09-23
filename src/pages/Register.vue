@@ -71,15 +71,15 @@ export default {
         onRegister () {                                                                                                                                                     
             authService
             .register(this.newUser) 
-            .then((response) => {
+            .then(() => {
                 authService
                 .login(this.newUser.email, this.newUser.password)
-                .then((response) => {
+                .then(() => {
                 this.$emit('userLoggedIn', true)
                 this.$router.push('/')
                 })
             })
-            // .catch((error) => this.errors = error.response.data.errors)     
+            .catch((error) => this.errors = error.response.data.errors)     
         }
     },
 }

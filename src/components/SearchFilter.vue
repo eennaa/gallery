@@ -11,6 +11,7 @@
 export default {
     props: {
         query: String,
+        page: Number
     },
 
     data () {
@@ -21,6 +22,7 @@ export default {
 
     methods: {
         onSubmit () {                                                                                                                                                     
+            this.$emit('update:page', 1)
             return this.$emit('update:query', this.searchTerm)
         }
     },

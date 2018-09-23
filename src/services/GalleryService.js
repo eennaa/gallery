@@ -13,16 +13,16 @@ export default class Gallery {
     return axios.get(`gallery/${id}`); //`gallery/${id}?filter={"include":["users"]}`
   }
 
-  getSearchedGalleries(query) {
+  getSearchedGalleries(query, page) {
     if(!query) {
       query = '';
     }
 
-    return axios.get(`gallery?query=${query}`);
+    return axios.get(`gallery?query=${query}&page=${page}`); 
   }
 
-  getUsersGalleries(){
-    return axios.get();
+  getUsersGalleries(user_id){
+    return axios.get(`gallery?query=${user_id}`);
   }
 }
 

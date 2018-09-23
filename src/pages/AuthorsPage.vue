@@ -14,7 +14,7 @@
         </li>
         <li>        
           Author:
-          <router-link :to="{ name: 'author', params: { id: gallery.id }}">
+          <router-link :to="{ name: 'author', params: { id: gallery.user_id }}">
             {{ gallery.user.first_name }} {{ gallery.user.last_name }}
           </router-link>
         </li>
@@ -35,7 +35,7 @@ import { DateMixin } from '../mixins'
 import SearchFilter from './../components/SearchFilter.vue'
 
 export default {
-  name: 'authors-page',
+  name: 'author-page',
   components: {
     SearchFilter
   },
@@ -50,7 +50,7 @@ export default {
 
   created() {
       galleriesService
-      .getAll()
+      .getUsersGalleries(galleries.user_id)
       .then((galleries) => this.galleries = galleries.data)
   }
 
