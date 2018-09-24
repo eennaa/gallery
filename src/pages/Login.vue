@@ -22,8 +22,11 @@
           <input v-model="loginCredentials.password" id="password" name="password" placeholder="your password" required="required" class="form-control here" type="password">
         </div>
       </div> 
-      <div class="form-group">
-        <button name="submit" type="submit" class="btn btn-primary">Login</button>
+      <div class="form-group row">
+        <div class="offset-5 col-7">
+          <button name="submit" type="submit" class="btn btn-warning btn-lg">Login</button>
+        </div>
+        
       </div>
     </form>
   </div>
@@ -54,5 +57,24 @@ methods: {
 </script>
 
 <style>
-
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid;
+    border-color: #ffc107;
+    background-color: #ffff99;
+    color: black;
+}
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid;
+    border-color: #ffc107;
+    background-color: #ffff99;
+    color: black;
+}
 </style>

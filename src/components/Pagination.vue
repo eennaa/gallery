@@ -1,10 +1,10 @@
 <template>
     <div>
-        <button class="btn btn-outline-warning my-2 my-sm-0" 
+        <button class="btn btn-warning btn-lg btn-block" 
             @click="loadMore"
             v-show="page !== last_page">
             Load more
-        </button> <br> <br>
+        </button> <br> <br> <br>
     </div>
 </template>
 
@@ -25,8 +25,11 @@ methods: {
                 newGalleries.map(gallery => {
                 this.shownGalleries.push(gallery);
                 });
-        });
-        
+        })
+        .catch(error => {
+                this.errors = error.response.data.errors;
+                });
+
         return this.shownGalleries;
     }
 }

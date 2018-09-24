@@ -44,7 +44,7 @@
             </div> 
             <div class="form-group row">
                 <div class="offset-5 col-7">
-                <button name="submit" type="submit" class="btn btn-warning">Register</button>
+                <button name="submit" type="submit" class="btn btn-warning btn-lg">Register</button>
                 </div>
             </div>
         </form>

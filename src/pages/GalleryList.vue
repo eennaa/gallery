@@ -1,27 +1,29 @@
 <template>
   <div class="container">
     <div v-if="galleries[0]">
+      <br>
       <h2>All Galleries</h2>
       <SearchFilter :query.sync="query" :page.sync="page"/> <br><br>
-      <ul v-for="gallery in shownGalleries" :key="gallery.id">
-        <li>
+      <fieldset v-for="gallery in shownGalleries" :key="gallery.id">
+        <legend>
+          Title:
           <router-link :to="{ name: 'singleGallery', params: { id: gallery.id }}">
-            Title: {{ gallery.title }}
+             {{ gallery.title }}
           </router-link>
-        </li>
-        <li>
-          <img :src="gallery.images[0].url" alt="Image is being loaded"> 
-        </li>
-        <li>        
+        </legend>
+        <ol>
+          <img :src="gallery.images[0].url" alt="Image is being loaded" style="width:720px;height:560;"> 
+        </ol>
+        <ol>        
           Author:
           <router-link :to="{ name: 'author', params: { id: gallery.user_id }}">
             {{ gallery.user.first_name }} {{ gallery.user.last_name }}
           </router-link>
-        </li>
-        <li>
+        </ol>
+        <ol>
           Created: {{ gallery.created_at | formatDate }}
-        </li>
-      </ul>
+        </ol>
+      </fieldset>
       <pagination :shownGalleries.sync="shownGalleries" :page.sync="page" :getGalleries="getGalleries" :last_page="last_page" />
     </div>
     <div v-else>
@@ -65,7 +67,10 @@ export default {
               this.shownGalleries = this.galleries;
             }
             resolve(response.data.data);   
-          });
+          })
+          .catch(error => {
+                this.errors = error.response.data.errors;
+                });
       });
     },    
     
@@ -86,7 +91,18 @@ export default {
 
   
 }
-
-
-
 </script>
+<style>
+fieldset {
+  border: 2px solid;
+  border-color: #ffc107;
+  display: block;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-top: 0.35em;
+  padding-bottom: 0.625em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 2px groove 
+}
+</style>

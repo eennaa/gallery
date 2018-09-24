@@ -6,8 +6,8 @@
                 indicators
                 background="#ababab"
                 :interval="4000"
-                img-width="1024"
-                img-height="480"
+                img-width="720"
+                img-height="560"
     >
 
       <div v-for="image in gallery.images" :key="image.id" :image="image">
