@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div v-if="galleries[0]">
-      <h2>{{ gallery.user.first_name }}'s Galleries</h2>
+      <!-- <h2>{{ gallery.user.first_name }}'s Galleries</h2> -->
+      <br><br>
       <SearchFilter :query.sync="query"/> <br><br>      
       <ul v-for="gallery in galleries" :key="gallery.id">
         <li>
@@ -22,6 +23,7 @@
           Created: {{ gallery.created_at | formatDate }}
         </li>
       </ul>
+      <pagination :shownGalleries.sync="shownGalleries" :page.sync="page" :getGalleries="getGalleries" :last_page="last_page" />
     </div>
     <div v-else>
       <p>This user doesn't have any galleries.</p>
@@ -39,19 +41,24 @@ export default {
   components: {
     SearchFilter
   },
+  props: {
+    query: String
+  },
+
   data() {
     return {
       galleries: [],
     }
   },
   
-  
   mixins: [ DateMixin ],
 
-  created() {
+  created: function() {
       galleriesService
-      .getUsersGalleries(galleries.user_id)
-      .then((galleries) => this.galleries = galleries.data)
+      .getUsersGalleries(this.$route.params.id)
+      .then((response) => {
+        this.galleries = response.data.data
+      });
   }
 
 }

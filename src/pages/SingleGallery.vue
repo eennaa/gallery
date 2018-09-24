@@ -3,7 +3,7 @@
         <ul> <br> <h2>{{ gallery.title }}</h2></ul>        
         <ul v-if="gallery.user">        
             Author:
-            <router-link :to="{ name: 'author', params: { id: gallery.id }}">
+            <router-link :to="{ name: 'author', params: { id: gallery.user_id }}">
             {{ gallery.user.first_name }} {{ gallery.user.last_name }}
             </router-link>
         </ul>

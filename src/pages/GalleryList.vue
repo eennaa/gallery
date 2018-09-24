@@ -22,11 +22,7 @@
           Created: {{ gallery.created_at | formatDate }}
         </li>
       </ul>
-      <button class="btn btn-outline-warning my-2 my-sm-0" 
-            @click="loadMore"
-            v-show="page !== pagination.last_page">
-            Load more
-      </button> <br> <br>
+      <pagination :shownGalleries.sync="shownGalleries" :page.sync="page" :getGalleries="getGalleries" :last_page="last_page" />
     </div>
     <div v-else>
       <p>Sorry, there are no galleries to show</p>
@@ -38,10 +34,12 @@
 import { galleriesService } from './../services/GalleryService'
 import { DateMixin } from '../mixins'
 import SearchFilter from './../components/SearchFilter.vue'
+import Pagination from './../components/Pagination.vue'
 
 export default {
   name: 'gallery-list',
   components: {
+    Pagination,
     SearchFilter,
   },
   
@@ -50,8 +48,8 @@ export default {
       galleries: [],
       shownGalleries: [],
       query: '',
-      page: 1,
-      pagination: ''
+      page: 1,  
+      last_page: null
     }
   },
   
@@ -62,25 +60,15 @@ export default {
           .getSearchedGalleries(this.query, this.page)
           .then((response) => { 
             this.galleries = response.data.data;
+            this.last_page = response.data.last_page;
             if(this.page === 1) {
               this.shownGalleries = this.galleries;
             }
             resolve(response.data.data);   
           });
       });
-    },
+    },    
     
-    loadMore() {
-        this.page += 1;
-        this.getGalleries()
-            .then((newGalleries) => {
-              newGalleries.map(gallery => {
-                this.shownGalleries.push(gallery);
-              });
-        });
-        
-        return this.shownGalleries;
-    }
   },
 
   computed: {
@@ -88,17 +76,6 @@ export default {
       this.query
       return this.getGalleries();
     },
-
-    makePagination(data) {
-      let pagination = {
-        current_page: data.current_page,
-        last_page: data.last_page,
-        next_page_url: data.next_page_url,
-        prev_page_url: data.prev_page_url
-      }
-
-      this.pagination = pagination
-    }    
   },
   
   mixins: [ DateMixin ],

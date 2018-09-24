@@ -22,7 +22,7 @@ export default class Gallery {
   }
 
   getUsersGalleries(user_id){
-    return axios.get(`gallery?query=${user_id}`);
+    return axios.get(`userGalleries/${user_id}`);
   }
 }
 
